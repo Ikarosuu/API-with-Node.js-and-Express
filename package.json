@@ -1,0 +1,29 @@
+{
+  "name": "api-with-node.js-and-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dist": "tsup src",
+    "start:dev": "tsx src/server.ts",
+    "start:watch": "tsx watch src/server.ts",
+    "start:dist": "npm run dist && node dist/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ikarosuu/API-with-Node.js-and-Express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Ikarosuu/API-with-Node.js-and-Express/issues"
+  },
+  "homepage": "https://github.com/Ikarosuu/API-with-Node.js-and-Express#readme",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
+  }
+}
