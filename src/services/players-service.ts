@@ -2,6 +2,7 @@ import { response } from "express"
 import { PlayerModel } from "../models/player-model"
 import * as PlayerRepository from "../repositories/players-repository"
 import * as HttpResponse from "../utils/http-helpers"
+import { StatisticsModel } from "../models/statistics-model"
 
 export const getPlayerService = async () => {
     const data = await PlayerRepository.findAllPlayers()
@@ -43,10 +44,28 @@ export const createPlayerService = async (player: PlayerModel) => {
 
 export const deletePlayerService = async (id: number) => {
     let response = null
+    const isDeleted = await PlayerRepository.deleteOnePlayer(id)
+    
+    if (isDeleted){
+        response = await HttpResponse.ok({message: "deleted"})
+    }else{
+        response = await HttpResponse.badRequest()
+    }
 
-    await PlayerRepository.deleteOnePlayer(id)
-
-    response = HttpResponse.ok({message: "deleted"})
     return response
 
+}
+
+export const updatePlayerService = async (id: number, statistics: StatisticsModel) => {
+    let response = null
+    
+    const data = await PlayerRepository.findAndModifyplayer(id, statistics)
+    if (id){
+        
+        response = await HttpResponse.ok(data)
+    }else{
+        response = await HttpResponse.badRequest()
+    }
+
+    return response
 }
