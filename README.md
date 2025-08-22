@@ -59,7 +59,8 @@ All routes are under the `/api` prefix.
 
 ### 🏆 Clubs (`/api/clubs`)
 
-- `GET /clubs` → Get all clubs  
+- `GET /clubs` → Get all clubs
+- `GET /clubs/:id` → Get a club by ID 
 
 ## 🔧 CORS Configuration
 
